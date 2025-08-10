@@ -6,7 +6,6 @@ export const ZEITLERFORCE_HEADER_HEIGHT = 50;
 
 export type ZeitlerForceHeaderProps = {
     onMobileExpandClick?: () => void;
-    isMobileSidebarExpanded: boolean;
 }
 
 export function ZeitlerforceHeader({ onMobileExpandClick }: ZeitlerForceHeaderProps) {
