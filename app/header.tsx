@@ -5,10 +5,11 @@ import { Button } from "@mui/material";
 export const ZEITLERFORCE_HEADER_HEIGHT = 50;
 
 export type ZeitlerForceHeaderProps = {
-    onMobileExpandClick: ({ isChecked }: { isChecked: boolean }) => void;
+    onMobileExpandClick?: () => void;
+    isMobileSidebarExpanded: boolean;
 }
 
-export function ZeitlerforceHeader() {
+export function ZeitlerforceHeader({ onMobileExpandClick }: ZeitlerForceHeaderProps) {
     const { isMobile } = useMediaContext();
 
     return (<div style={{
@@ -23,6 +24,10 @@ export function ZeitlerforceHeader() {
             {isMobile && (
                 <Button style={{
                     marginLeft: 10
+                }} onClick={() => {
+                    if (onMobileExpandClick) {
+                        onMobileExpandClick();
+                    }
                 }}>
                     <MenuIcon></MenuIcon>
                 </Button>

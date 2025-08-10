@@ -10,8 +10,8 @@ import {
 import type { Route } from "./+types/root";
 import "./app.css";
 import { ZeitlerforceHeader } from "./header";
-import React from "react";
-import { ZeitlerforceSidebar } from "./sidebar";
+import React, { useState } from "react";
+import { ZeitlerForceSidebar } from "./sidebar";
 import { theme } from "./theme";
 import { ThemeProvider } from "@mui/material";
 
@@ -47,11 +47,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  const [isMobileSidebarExpanded, setIsMobileSidebarExpanded] = useState(false);
   return (
     <>
       <ThemeProvider theme={theme}>
-        <ZeitlerforceHeader></ZeitlerforceHeader>
-        <ZeitlerforceSidebar></ZeitlerforceSidebar>
+        <ZeitlerforceHeader onMobileExpandClick={() => {
+          setIsMobileSidebarExpanded(!isMobileSidebarExpanded);
+        }} ></ZeitlerforceHeader>
+        <ZeitlerForceSidebar isMobileSidebarExpanded={isMobileSidebarExpanded}></ZeitlerForceSidebar>
         <Outlet></Outlet>
       </ThemeProvider>
     </>
