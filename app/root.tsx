@@ -12,6 +12,8 @@ import "./app.css";
 import { ZeitlerforceHeader } from "./header";
 import React from "react";
 import { ZeitlerforceSidebar } from "./sidebar";
+import { theme } from "./theme";
+import { ThemeProvider } from "@mui/material";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -47,9 +49,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
-      <ZeitlerforceHeader></ZeitlerforceHeader>
-      <ZeitlerforceSidebar></ZeitlerforceSidebar>
-      <Outlet></Outlet>
+      <ThemeProvider theme={theme}>
+        <ZeitlerforceHeader></ZeitlerforceHeader>
+        <ZeitlerforceSidebar></ZeitlerforceSidebar>
+        <Outlet></Outlet>
+      </ThemeProvider>
     </>
   );
 }
