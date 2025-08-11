@@ -11,7 +11,6 @@ import type { Route } from "./+types/root";
 import "./app.css";
 import { ZeitlerforceNavigation } from "./navigation";
 import React, { useState } from "react";
-import { ZeitlerForceSidebar } from "./sidebar";
 import { theme } from "./theme";
 import { ThemeProvider } from "@mui/material";
 
@@ -50,7 +49,7 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <ZeitlerforceNavigation ></ZeitlerforceNavigation>
+        <ZeitlerforceNavigation></ZeitlerforceNavigation>
       </ThemeProvider>
     </>
   );

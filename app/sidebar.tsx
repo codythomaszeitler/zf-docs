@@ -1,33 +1,38 @@
 import type React from "react";
-import { ZEITLERFORCE_HEADER_HEIGHT } from "./navigation";
 import { useMediaContext } from "./mediaContext";
 
 import Paper from '@mui/material/Paper';
-import { Button, List, ListItem } from "@mui/material";
 import { useNavigate } from "react-router";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 
 type ZeitlerForceSidebarProps = {
-    isMobileSidebarExpanded: boolean;
+    isSidebarExpanded: boolean;
 }
 
-export function ZeitlerForceSidebar({ isMobileSidebarExpanded }: ZeitlerForceSidebarProps) {
+export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarProps) {
     const { isMobile } = useMediaContext();
 
     const isExpanded = () => {
-        if (!isMobile) {
-            return true;
-        }
-        return isMobileSidebarExpanded;
+        return isSidebarExpanded;
     };
+
+    const position = () => {
+        if (isMobile && isSidebarExpanded) {
+            return 'absolute';
+        }
+        return undefined;
+    }
 
     const width = isExpanded() ? 250 : 5;
     const sidebarStyles: React.CSSProperties = {
         width,
-        height : '100%',
+        height: '100%',
         overflow: 'hidden',
         transition: 'width 0.5s',
-        padding: 5
+        padding: 5,
+        position: position(),
+        top: '5vh',
+        left: 0
     };
 
     const navigate = useNavigate();
