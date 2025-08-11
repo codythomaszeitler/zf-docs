@@ -1,8 +1,13 @@
-import { Outlet } from "react-router";
-import { BasicSimpleTreeView } from "./simpleTreeView";
-
 export default function Dashboard() {
+	const numbers = [];
+	for (let i = 0; i < 1000; i++) {
+		numbers.push(i);
+	}
+
 	return (
-		<p>Just show me something react</p>	
+		<div style={{
+		}}>
+			{numbers.map(i => <p>{i}</p>)}
+		</div>
 	);
 }

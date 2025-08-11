@@ -1,5 +1,5 @@
 import type React from "react";
-import { ZEITLERFORCE_HEADER_HEIGHT } from "./header";
+import { ZEITLERFORCE_HEADER_HEIGHT } from "./navigation";
 import { useMediaContext } from "./mediaContext";
 
 import Paper from '@mui/material/Paper';
@@ -21,18 +21,16 @@ export function ZeitlerForceSidebar({ isMobileSidebarExpanded }: ZeitlerForceSid
         return isMobileSidebarExpanded;
     };
 
+    const width = isExpanded() ? 250 : 5;
     const sidebarStyles: React.CSSProperties = {
-        position: 'sticky',
-        top: ZEITLERFORCE_HEADER_HEIGHT,
-        width: isExpanded() ? 250 : 5,
-        height: `calc(100vh - ${ZEITLERFORCE_HEADER_HEIGHT}px)`,
+        width,
+        height : '100%',
         overflow: 'hidden',
-        transition: 'width 2s',
-        padding : 5
+        transition: 'width 0.5s',
+        padding: 5
     };
 
     const navigate = useNavigate();
-
     return (
         <Paper style={sidebarStyles} elevation={6} square>
             {isExpanded() && (
@@ -61,7 +59,6 @@ export function ZeitlerForceSidebar({ isMobileSidebarExpanded }: ZeitlerForceSid
                     </TreeItem>
                 </SimpleTreeView>
             )}
-
         </Paper>
     );
 }
