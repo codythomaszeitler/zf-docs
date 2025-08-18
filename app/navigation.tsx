@@ -53,8 +53,10 @@ export function ZeitlerforceNavigation() {
             </AppBar>
             <Box display='flex' flexDirection='row' flex={'1 0 0'} height={"95vh"}>
                 <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
-                <Box flex='1 1' overflow='scroll' width='100%'>
-                    <Outlet></Outlet>
+                <Box flex='1 0'>
+                    <Box height='100%' width='100%' overflow='scroll'>
+                        <Outlet></Outlet>
+                    </Box>
                 </Box>
             </Box>
         </Box>
