@@ -26,9 +26,7 @@ export function ZeitlerforceNavigation() {
 
     return (
         <Box display='flex' flexDirection='column'>
-            <AppBar position="static" enableColorOnDark style={{
-                height: '5vh'
-            }}>
+            <AppBar position="static" enableColorOnDark >
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -54,7 +52,7 @@ export function ZeitlerforceNavigation() {
             <Box display='flex' flexDirection='row' flex={'1 0 0'} height={"95vh"}>
                 <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
-                    <Box height='100%' width='100%' overflow='scroll'>
+                    <Box height='100%' width='100%' overflow='auto'>
                         <Outlet></Outlet>
                     </Box>
                 </Box>
