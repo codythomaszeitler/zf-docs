@@ -41,8 +41,8 @@ export function ZeitlerforceNavigation() {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                        {/** TODO: Make this automatically pick up the correct version. */}
                         v0.5.3
-
                     </Typography>
                     <Button color="inherit">
                         ZeitlerForce
