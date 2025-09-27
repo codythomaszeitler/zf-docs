@@ -1,18 +1,21 @@
 
 import { describe, it, expect } from '@jest/globals';
-import { ZeitlerForceDocumentation } from '../zeitlerForceDocumentation';
-import { render, screen } from './testUtil';
+import { ZeitlerForceDocumentation, ZeitlerForceDocumentationContext, type ZeitlerForceDocumentationContextType, type ZeitlerForceDocumentationProps } from '../zeitlerForceDocumentation';
+import { render, screen, isMobileMediaQuery } from './testUtil';
 import { MemoryRouter } from 'react-router';
 
 describe('<ZeitlerForceDocumentation>', () => {
+
     it('should do the thing', () => {
-        renderTestObject();
+        renderTestObject(isMobileMediaQuery());
     });
 
-    function renderTestObject() {
+    function renderTestObject(context: ZeitlerForceDocumentationContextType) {
         return render(
-            <MemoryRouter>
-                <ZeitlerForceDocumentation></ZeitlerForceDocumentation>
-            </MemoryRouter>);
+            <ZeitlerForceDocumentationContext.Provider value={context}>
+                <MemoryRouter>
+                    <ZeitlerForceDocumentation></ZeitlerForceDocumentation>
+                </MemoryRouter>
+            </ZeitlerForceDocumentationContext.Provider>);
     }
 });

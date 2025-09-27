@@ -5,6 +5,8 @@ export type MediaContextType = {
 };
 
 export function useMediaContext(): MediaContextType {
+
+    // Hmmm...
     const isMobile = useMediaQuery('(max-width: 650px)');
 
     return {

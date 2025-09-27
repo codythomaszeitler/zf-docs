@@ -1,4 +1,3 @@
-import { useMediaContext } from "./mediaContext";
 import MenuIcon from '@mui/icons-material/Menu';
 import { Button } from "@mui/material";
 import AppBar from '@mui/material/AppBar';
@@ -8,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { ZeitlerForceSidebar } from "./sidebar";
 import { Outlet } from "react-router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
 
 export const ZEITLERFORCE_HEADER_HEIGHT = 64;
 
@@ -17,6 +17,7 @@ export type ZeitlerForceHeaderProps = {
 }
 
 export function ZeitlerforceNavigation() {
+    const { useMediaContext } = useContext(ZeitlerForceDocumentationContext);
     const { isMobile } = useMediaContext();
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(!isMobile);
 
