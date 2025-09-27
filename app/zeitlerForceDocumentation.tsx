@@ -2,9 +2,8 @@ import { ZeitlerforceNavigation } from "./navigation";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 
-import { createContext, useCallback, useContext } from 'react';
+import { createContext, useContext } from 'react';
 import { useMediaContext, type MediaContextType } from "./mediaContext";
-import { get } from "http";
 
 export interface ZeitlerForceDocumentationContextType {
     useMediaContext: () => MediaContextType;
