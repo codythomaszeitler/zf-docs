@@ -2,17 +2,14 @@ import {
   isRouteErrorResponse,
   Links,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration,
 } from "react-router";
 
 import type { Route } from "./+types/root";
 import "./app.css";
-import { ZeitlerforceNavigation } from "./navigation";
-import React, { useState } from "react";
-import { theme } from "./theme";
-import { ThemeProvider } from "@mui/material";
+import React from "react";
+import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -48,9 +45,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <ZeitlerforceNavigation></ZeitlerforceNavigation>
-      </ThemeProvider>
+      <ZeitlerForceDocumentation></ZeitlerForceDocumentation>
     </>
   );
 }
