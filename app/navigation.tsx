@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { ZeitlerForceSidebar } from "./sidebar";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
 import {useAppBarHeight} from './useAppBarHeight';
@@ -27,6 +27,7 @@ export function ZeitlerForceNavigation() {
     }, [isMobile]);
 
     const appBarHeight = useAppBarHeight();
+    const navigate = useNavigate();
 
     return (
         <Box display='flex' flexDirection='column'>
@@ -48,7 +49,9 @@ export function ZeitlerForceNavigation() {
                         {/** TODO: Make this automatically pick up the correct version. */}
                         v0.5.3
                     </Typography>
-                    <Button color="inherit">
+                    <Button color="inherit" onClick={() => {
+                        navigate('/');
+                    }}>
                         ZeitlerForce
                     </Button>
                 </Toolbar>

@@ -2,9 +2,10 @@
 import { describe, it, expect } from '@jest/globals';
 import { ZeitlerForceDocumentation, ZeitlerForceDocumentationContext, type ZeitlerForceDocumentationContextType, type ZeitlerForceDocumentationProps } from '../zeitlerForceDocumentation';
 import { render, isMobileMediaQuery, screen, isDesktopMediaQuery } from './testUtil';
-import { MemoryRouter } from 'react-router';
+import { createRoutesStub, MemoryRouter } from 'react-router';
 import { act } from 'react';
-import { beforeEach } from 'node:test';
+import { URL } from 'url';
+import { waitFor } from '@testing-library/dom';
 
 describe('<ZeitlerForceDocumentation>', () => {
 
@@ -40,14 +41,39 @@ describe('<ZeitlerForceDocumentation>', () => {
         it('should "deploy on save" when you select deployments -> deploy on save', () => {
             renderTestObject(isDesktopMediaQuery());
 
-            clickOnMenuItem('Deployments');
-            clickOnMenuItem('Deploy on Save');
+            clickOnMenuItems('Deployments', 'Deploy on Save');
         });
     });
 
-    function clickOnMenuItem(label: string) {
+    it('should navigation back to dashboard ', async () => {
+
+        const Stub = createRoutesStub([
+            {
+                path : 'deploy-on-save',
+                
+            }
+        ])
+
+        renderTestObject(isDesktopMediaQuery());
+        await clickOnMenuItems('Deployments', 'Deploy on Save');
+
+        await waitFor(() => {
+            const url = new URL(window.location.href);
+            expect(url.pathname).not.toBe('/')
+        });
+
+        console.log(window.location.href);
+    });
+
+    async function clickOnMenuItems(...labels: string[]) {
+        for (let i = 0; i < labels.length; i++) {
+            await clickOnMenuItem(labels[i]);
+        }
+    }
+
+    async function clickOnMenuItem(label: string) {
         const element = screen.getByText(label);
-        act(() => {
+        await act(async () => {
             element.click();
         });
     }
