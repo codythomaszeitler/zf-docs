@@ -1,5 +1,4 @@
 import { useMediaQuery, useTheme } from '@mui/material';
-import { useState, useEffect } from 'react';
 
 type MinHeight = {
     minHeight: number,
