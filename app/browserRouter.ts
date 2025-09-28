@@ -1,6 +1,5 @@
 import {
-    createBrowserRouter,
-    RouterProvider,
+    createBrowserRouter
 } from "react-router";
 import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
 import DeployOnSaveDocumentation from "./routes/deployOnSaveDocumentation";
