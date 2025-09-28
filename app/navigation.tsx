@@ -9,6 +9,7 @@ import { ZeitlerForceSidebar } from "./sidebar";
 import { Outlet } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
+import {useAppBarHeight} from './useAppBarHeight';
 
 export const ZEITLERFORCE_HEADER_HEIGHT = 64;
 
@@ -16,7 +17,7 @@ export type ZeitlerForceHeaderProps = {
     onMobileExpandClick?: () => void;
 }
 
-export function ZeitlerforceNavigation() {
+export function ZeitlerForceNavigation() {
     const { useMediaContext } = useContext(ZeitlerForceDocumentationContext);
     const { isMobile } = useMediaContext();
     const [isSidebarExpanded, setIsSidebarExpanded] = useState(!isMobile);
@@ -24,6 +25,8 @@ export function ZeitlerforceNavigation() {
     useEffect(() => {
         setIsSidebarExpanded(!isMobile);
     }, [isMobile]);
+
+    const appBarHeight = useAppBarHeight();
 
     return (
         <Box display='flex' flexDirection='column'>
@@ -50,7 +53,8 @@ export function ZeitlerforceNavigation() {
                     </Button>
                 </Toolbar>
             </AppBar>
-            <Box display='flex' flexDirection='row' flex={'1 0 0'} height={"95vh"}>
+            <Box display='flex' flexDirection='row' flex={'1 0 auto'} height={`calc(100vh - ${appBarHeight}px)`}>
+
                 <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
                     <Box height='100%' width='100%' overflow='auto'>

@@ -1,4 +1,4 @@
-import { ZeitlerforceNavigation } from "./navigation";
+import { ZeitlerForceNavigation } from "./navigation";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 
@@ -22,7 +22,7 @@ export function ZeitlerForceDocumentation() {
     return (
         <ZeitlerForceDocumentationContext.Provider value={context}>
             <ThemeProvider theme={theme}>
-                <ZeitlerforceNavigation></ZeitlerforceNavigation>
+                <ZeitlerForceNavigation></ZeitlerForceNavigation>
             </ThemeProvider>
         </ZeitlerForceDocumentationContext.Provider>
     );

@@ -42,8 +42,7 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
                 <SimpleTreeView>
                     <TreeItem itemId="deployments" label="Deployments">
                         <TreeItem itemId="deploy-on-save" label="Deploy on Save" onClick={(event) => {
-                            console.log(event);
-                            navigate("/documentation/deployments")
+                            navigate("deploy-on-save")
                         }} />
                         <TreeItem itemId="deploy-folder" label="Deploy Folder" />
                         <TreeItem itemId="see-errors" label="See Errors" />
