@@ -1,3 +1,4 @@
 export default function DeployOnSaveDocumentation() {
-    return (<div>DeployOnSaveDocumentation</div>);
+    return (<div data-testid='deploy-on-save-screen'>
+        DeployOnSaveDocumentation</div>);
 }

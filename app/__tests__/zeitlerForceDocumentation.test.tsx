@@ -1,11 +1,8 @@
-
 import { describe, it, expect } from '@jest/globals';
-import { ZeitlerForceDocumentation, ZeitlerForceDocumentationContext, type ZeitlerForceDocumentationContextType, type ZeitlerForceDocumentationProps } from '../zeitlerForceDocumentation';
-import { render, isMobileMediaQuery, screen, isDesktopMediaQuery } from './testUtil';
-import { createRoutesStub, MemoryRouter } from 'react-router';
+import { type ZeitlerForceDocumentationContextType } from '../zeitlerForceDocumentation';
+import { isMobileMediaQuery, screen, isDesktopMediaQuery, renderAppTestObject } from './testUtil';
 import { act } from 'react';
-import { URL } from 'url';
-import { waitFor } from '@testing-library/dom';
+
 
 describe('<ZeitlerForceDocumentation>', () => {
 
@@ -38,31 +35,31 @@ describe('<ZeitlerForceDocumentation>', () => {
             expect(tree).toBeDefined();
         });
 
-        it('should "deploy on save" when you select deployments -> deploy on save', () => {
+        it('should "deploy on save" when you select deployments -> deploy on save', async () => {
             renderTestObject(isDesktopMediaQuery());
 
-            clickOnMenuItems('Deployments', 'Deploy on Save');
-        });
-    });
-
-    it('should navigation back to dashboard ', async () => {
-
-        const Stub = createRoutesStub([
-            {
-                path : 'deploy-on-save',
-                
-            }
-        ])
-
-        renderTestObject(isDesktopMediaQuery());
-        await clickOnMenuItems('Deployments', 'Deploy on Save');
-
-        await waitFor(() => {
-            const url = new URL(window.location.href);
-            expect(url.pathname).not.toBe('/')
+            await clickOnMenuItems('Deployments', 'Deploy on Save');
+            const deployOnSaveScreen = screen.queryByTestId('deploy-on-save-screen');
+            expect(deployOnSaveScreen).toBeTruthy();
         });
 
-        console.log(window.location.href);
+        it('should navigate back to dashboard when ZEITLERFORCE header button is clicked', async () => {
+            renderTestObject(isDesktopMediaQuery());
+            await clickOnMenuItems('Deployments', 'Deploy on Save');
+
+            const deployOnSaveScreen = screen.queryByTestId('deploy-on-save-screen');
+            expect(deployOnSaveScreen).toBeTruthy();
+
+            const zeitlerForceHeaderButton = screen.getByRole('button', {
+                name: 'ZeitlerForce'
+            });
+
+            await act(async () => {
+                zeitlerForceHeaderButton.click();
+            });
+            const dashboardScreen = screen.queryByTestId('dashboard-screen');
+            expect(dashboardScreen).toBeTruthy();
+        });
     });
 
     async function clickOnMenuItems(...labels: string[]) {
@@ -79,11 +76,6 @@ describe('<ZeitlerForceDocumentation>', () => {
     }
 
     function renderTestObject(context: ZeitlerForceDocumentationContextType) {
-        return render(
-            <ZeitlerForceDocumentationContext.Provider value={context}>
-                <MemoryRouter>
-                    <ZeitlerForceDocumentation></ZeitlerForceDocumentation>
-                </MemoryRouter>
-            </ZeitlerForceDocumentationContext.Provider>);
+        return renderAppTestObject(context);
     }
 });

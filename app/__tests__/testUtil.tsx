@@ -4,9 +4,10 @@ import React from "react";
 export { screen };
 
 import { render as testingLibraryRender } from "@testing-library/react";
-import type { ZeitlerForceDocumentationContextType } from "~/zeitlerForceDocumentation";
-import { useContext } from "react";
-import type { MediaContextType } from "~/mediaContext";
+import { ZeitlerForceDocumentationContext, type ZeitlerForceDocumentationContextType } from "../zeitlerForceDocumentation";
+import type { MediaContextType } from "../mediaContext";
+import { createMemoryRouter, RouterProvider } from "react-router";
+import { routerConfig } from "../browserRouter";
 
 export function render(ui: React.ReactNode): RenderResult {
     return testingLibraryRender(ui);
@@ -17,7 +18,7 @@ export function isMobileMediaQuery() {
 }
 
 export function isDesktopMediaQuery() {
-    return genUseMediaContext({ isMobile: false }); 
+    return genUseMediaContext({ isMobile: false });
 }
 
 function genUseMediaContext(context: MediaContextType): ZeitlerForceDocumentationContextType {
@@ -26,4 +27,15 @@ function genUseMediaContext(context: MediaContextType): ZeitlerForceDocumentatio
             return context;
         }
     }
+}
+
+export function renderAppTestObject(context: ZeitlerForceDocumentationContextType) {
+    const router = createMemoryRouter(routerConfig, {
+        initialEntries: ["/"]
+    });
+    return render(
+        <ZeitlerForceDocumentationContext.Provider value={context}>
+            <RouterProvider router={router}></RouterProvider>
+        </ZeitlerForceDocumentationContext.Provider>
+    )
 }
