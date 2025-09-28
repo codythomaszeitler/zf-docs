@@ -25,11 +25,3 @@ export function useAppBarHeight(): number {
     }
     return (currentToolbarMinHeight as MinHeight).minHeight;
 }
-
-function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
-}
