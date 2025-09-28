@@ -4,6 +4,7 @@ import {
 import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
 import DeployOnSaveDocumentation from "./routes/deployOnSaveDocumentation";
 
+// Okay, so what in the world is going wrong here?
 export function genBrowserRouter() {
     return createBrowserRouter([
         {

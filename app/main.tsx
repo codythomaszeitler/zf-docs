@@ -1,11 +1,11 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { ZeitlerForceDocumentation } from './zeitlerForceDocumentation'
-import {RouterProvider} from "react-rou"
+import { RouterProvider } from "react-router/dom";
+import { genBrowserRouter } from './browserRouter';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <ZeitlerForceDocumentation></ZeitlerForceDocumentation>
+        <RouterProvider router={genBrowserRouter()}></RouterProvider>
     </StrictMode>,
 )
 
