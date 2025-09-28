@@ -42,14 +42,24 @@ describe('<ZeitlerForceDocumentation>', () => {
             const deployOnSaveScreen = screen.queryByTestId('deploy-on-save-screen');
             expect(deployOnSaveScreen).toBeTruthy();
         });
-    });
 
-    it('should navigation back to dashboard ', async () => {
-        renderTestObject(isDesktopMediaQuery());
-        await clickOnMenuItems('Deployments', 'Deploy on Save');
+        it('should navigate back to dashboard when ZEITLERFORCE header button is clicked', async () => {
+            renderTestObject(isDesktopMediaQuery());
+            await clickOnMenuItems('Deployments', 'Deploy on Save');
 
-        const deployOnSaveScreen = screen.queryByTestId('deploy-on-save-screen');
-        expect(deployOnSaveScreen).toBeTruthy();
+            const deployOnSaveScreen = screen.queryByTestId('deploy-on-save-screen');
+            expect(deployOnSaveScreen).toBeTruthy();
+
+            const zeitlerForceHeaderButton = screen.getByRole('button', {
+                name: 'ZeitlerForce'
+            });
+
+            await act(async () => {
+                zeitlerForceHeaderButton.click();
+            });
+            const dashboardScreen = screen.queryByTestId('dashboard-screen');
+            expect(dashboardScreen).toBeTruthy();
+        });
     });
 
     async function clickOnMenuItems(...labels: string[]) {
