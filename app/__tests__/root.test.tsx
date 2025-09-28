@@ -1,12 +1,14 @@
-import {describe, expect, it} from '@jest/globals';
+import { describe, it } from "@jest/globals";
+import { render } from "./testUtil";
+import App from "../root";
 
 
-import { Layout } from '~/root';
-
-describe('<ZeitlerForceDocs>', () => {
+describe('<App>', () => {
     it('should do the thing', () => {
+        renderTestObject();
     });
 
     function renderTestObject() {
+        return render(<App></App>)
     }
 });

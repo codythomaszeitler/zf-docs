@@ -1,13 +1,8 @@
-export default function Dashboard() {
-	const numbers = [];
-	for (let i = 0; i < 1000; i++) {
-		numbers.push(i);
-	}
+import { Box } from "@mui/material";
 
+export default function Dashboard() {
 	return (
-		<div style={{
-		}}>
-			{numbers.map(i => <p>{i}</p>)}
-		</div>
+		<Box>
+		</Box>
 	);
 }
