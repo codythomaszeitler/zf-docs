@@ -10,9 +10,18 @@ type ZeitlerForceSidebarProps = {
 }
 
 export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarProps) {
+    const { isMobile } = useMediaContext();
+
     const isExpanded = () => {
         return isSidebarExpanded;
     };
+
+    const position = () => {
+        if (isMobile && isSidebarExpanded) {
+            return 'absolute';
+        }
+        return undefined;
+    }
 
     const width = isExpanded() ? 250 : 5;
     const sidebarStyles: React.CSSProperties = {
@@ -21,6 +30,9 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
         overflow: 'hidden',
         transition: 'width 0.5s',
         padding: 5,
+        position: position(),
+        top: '5vh',
+        left: 0
     };
 
     const navigate = useNavigate();
