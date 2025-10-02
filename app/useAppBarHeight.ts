@@ -4,7 +4,7 @@ type MinHeight = {
     minHeight: number,
 };
 
-export function useAppBarHeight(): number {
+export function useAppBarHeight(): { appBarHeight: number; unitOfMeasurement: string } {
     const {
         mixins: { toolbar },
         breakpoints,
@@ -22,5 +22,9 @@ export function useAppBarHeight(): number {
     } else {
         currentToolbarMinHeight = toolbar;
     }
-    return (currentToolbarMinHeight as MinHeight).minHeight;
+
+    return {
+        appBarHeight: (currentToolbarMinHeight as MinHeight).minHeight,
+        unitOfMeasurement: 'px'
+    }
 }

@@ -4,15 +4,27 @@ import { useMediaContext } from "./mediaContext";
 import Paper from '@mui/material/Paper';
 import { useNavigate } from "react-router";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
+import { useAppBarHeight } from "./useAppBarHeight";
 
 type ZeitlerForceSidebarProps = {
     isSidebarExpanded: boolean;
 }
 
 export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarProps) {
+    const { isMobile } = useMediaContext();
+    // We can use a hook here - correct?
+    const {appBarHeight, unitOfMeasurement}= useAppBarHeight();
+
     const isExpanded = () => {
         return isSidebarExpanded;
     };
+
+    const position = () => {
+        if (isMobile && isSidebarExpanded) {
+            return 'absolute';
+        }
+        return undefined;
+    }
 
     const width = isExpanded() ? 250 : 5;
     const sidebarStyles: React.CSSProperties = {
@@ -21,6 +33,9 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
         overflow: 'hidden',
         transition: 'width 0.5s',
         padding: 5,
+        position: position(),
+        top: `${appBarHeight}${unitOfMeasurement}`,
+        left: 0
     };
 
     const navigate = useNavigate();
