@@ -13,7 +13,7 @@ type ZeitlerForceSidebarProps = {
 export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarProps) {
     const { isMobile } = useMediaContext();
     // We can use a hook here - correct?
-    const {appBarHeight, unitOfMeasurement}= useAppBarHeight();
+    const { appBarHeight, unitOfMeasurement } = useAppBarHeight();
 
     const isExpanded = () => {
         return isSidebarExpanded;
