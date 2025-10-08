@@ -9,8 +9,7 @@ export function BasicSimpleTreeView() {
 		<Box sx={{ minHeight: 352, minWidth: 250 }}>
 			<SimpleTreeView>
 				<TreeItem itemId="deployments" label="Deployments">
-					<TreeItem itemId="deploy-on-save" label="Deploy on Save" onClick={(event) => {
-						console.log(event);
+					<TreeItem itemId="deploy-on-save" label="Deploy on Save" onClick={() => {
 						navigate("/documentation/deployments")
 					}} />
 					<TreeItem itemId="deploy-folder" label="Deploy Folder" />

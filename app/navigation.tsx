@@ -60,7 +60,19 @@ export function ZeitlerForceNavigation() {
 
                 <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
-                    <Box height='100%' width='100%' overflow='auto'>
+                    <Box height='100%' width='100%' overflow='auto'
+                        sx={(theme) => {
+                            return {
+                                pt : 3,
+                                [theme.breakpoints.down('sm')]: {
+                                    px: 3,
+                                },
+                                [theme.breakpoints.up('sm')]: {
+                                    px: 5,
+                                }
+                            }
+                        }}
+                    >
                         <Outlet></Outlet>
                     </Box>
                 </Box>
