@@ -20,7 +20,7 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
     };
 
     const position = () => {
-        if (isMobile && isSidebarExpanded) {
+        if (isMobile) {
             return 'absolute';
         }
         return undefined;
@@ -29,7 +29,7 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
     const width = isExpanded() ? 250 : 5;
     const sidebarStyles: React.CSSProperties = {
         width,
-        height: '100%',
+        height: `calc(100vh - ${appBarHeight}${unitOfMeasurement})`,
         overflow: 'hidden',
         transition: 'width 0.5s',
         padding: 5,
