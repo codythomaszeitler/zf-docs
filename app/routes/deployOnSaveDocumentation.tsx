@@ -4,17 +4,6 @@ import Box from "@mui/material/Box";
 import Divider from '@mui/material/Divider';
 import React from "react";
 
-/*
-    We are going to have sections on the right side that correlate to the 
-    right side. 
-
-    We are trying to find some way to consistently apply the padding around a line.
-
-
-    For example - should there be a react element that does this 
-    or should it be a class style that is applied.
-*/
-
 export default function DeployOnSaveDocumentation() {
     return (
         <Box data-testid='deploy-on-save-screen'>
