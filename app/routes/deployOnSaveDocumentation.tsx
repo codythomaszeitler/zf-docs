@@ -2,6 +2,9 @@ import Box from "@mui/material/Box";
 
 import { DocumentationBody, DocumentationHeader, DocumentationSubBody, DocumentationSubHeader, lorumIpsumText } from "./utils";
 
+
+export const deployOnSaveHeader = 'Deploy on Save';
+
 export default function DeployOnSaveDocumentation() {
     return (
         <Box data-testid='deploy-on-save-screen'>
@@ -11,8 +14,8 @@ export default function DeployOnSaveDocumentation() {
             <DocumentationBody>
                 {lorumIpsumText}
             </DocumentationBody>
-            <DocumentationSubHeader>
-                Deploy on Save
+            <DocumentationSubHeader id="Deploy on Save">
+                {deployOnSaveHeader}
             </DocumentationSubHeader>
             <DocumentationSubBody>
                 {lorumIpsumText}

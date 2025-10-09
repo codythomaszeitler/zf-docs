@@ -8,9 +8,8 @@ Aenean at nisi at nisl lobortis commodo vel vitae ligula. Aliquam ultricies vive
 Proin id tortor ac leo molestie pellentesque. Curabitur id orci mauris. Vestibulum tincidunt risus et nisl sollicitudin suscipit. Cras id luctus velit. Mauris luctus elit sit amet lobortis hendrerit. Nullam mattis ullamcorper ex. Sed tellus est, pretium a tortor sed, imperdiet ornare magna. Suspendisse consequat, arcu quis hendrerit mollis, justo nulla pharetra quam, a convallis magna risus ut turpis. Integer eget vulputate nulla.
 Suspendisse potenti. Donec eu nibh sit amet est ornare fermentum vel ut turpis. Donec egestas mauris quis egestas ultricies. Duis lobortis lobortis dolor. Etiam faucibus gravida porttitor. Curabitur orci ex, tincidunt non ante nec, lacinia luctus justo. Aenean convallis pharetra lacus, in cursus elit blandit ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi eu fermentum mi, at iaculis turpis. Integer vitae tortor erat. Cras feugiat varius fringilla.`;
 
-
 type Variant = Pick<TypographyOwnProps, "variant">;
-type DocumentationProps = { children?: React.ReactNode[] | React.ReactNode } & Variant
+type DocumentationProps = { children?: React.ReactNode[] | React.ReactNode; id?: 'Deploy on Save' } & Variant
 
 export function DocumentationHeader({ children, variant = 'h4' }: DocumentationProps) {
     return (
@@ -21,15 +20,15 @@ export function DocumentationHeader({ children, variant = 'h4' }: DocumentationP
     );
 }
 
-export function DocumentationSubHeader({ children, variant = 'h5' }: DocumentationProps) {
+export function DocumentationSubHeader({ children, variant = 'h5', id }: DocumentationProps) {
     return (
-        <>
+        <div data-header-id={id}>
             <Divider></Divider>
             <Typography variant={variant} sx={{
                 py: 1
             }}> {children}</Typography >
             <Divider></Divider>
-        </>);
+        </div>);
 }
 
 export function DocumentationBody({ children }: { children?: React.ReactNode[] | React.ReactNode }) {

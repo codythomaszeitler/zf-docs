@@ -6,8 +6,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { ZeitlerForceSidebar } from "./sidebar";
-import { Outlet, useNavigate } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { Outlet, useLocation, useNavigate } from "react-router";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
 import { useAppBarHeight } from './useAppBarHeight';
 
@@ -28,6 +28,24 @@ export function ZeitlerForceNavigation() {
 
     const { appBarHeight, unitOfMeasurement } = useAppBarHeight();
     const navigate = useNavigate();
+
+    const scrollBoxRef = useRef<HTMLElement>(null);
+
+    const location = useLocation();
+    const fragment = location.hash;
+
+    useEffect(() => {
+        if (scrollBoxRef?.current && fragment) {
+            const f = decodeURI(fragment.substring(1));
+
+            const element = scrollBoxRef.current.querySelector(`[data-header-id="${f}"]`)
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth'
+                })
+            }
+        }
+    }, [fragment]);
 
     return (
         <Box display='flex' flexDirection='column'>
@@ -57,13 +75,19 @@ export function ZeitlerForceNavigation() {
                 </Toolbar>
             </AppBar>
             <Box display='flex' flexDirection='row' flex={'1 0 auto'} height={`calc(100vh - ${appBarHeight}${unitOfMeasurement})`}>
-
-                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
+                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded} onNavigate={({ id }) => {
+                    // if (scrollBoxRef) {
+                    //     scrollBoxRef.current?.scrollTo({
+                    //         top: 0,
+                    //         behavior: 'smooth'
+                    //     });
+                    // }
+                }}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
-                    <Box height='100%' width='100%' overflow='auto'
+                    <Box ref={scrollBoxRef} height='100%' width='100%' overflow='auto'
                         sx={(theme) => {
                             return {
-                                pt : 3,
+                                pt: 3,
                                 [theme.breakpoints.down('sm')]: {
                                     px: 3,
                                 },
