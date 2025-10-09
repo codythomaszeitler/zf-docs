@@ -35,14 +35,21 @@ export function ZeitlerForceNavigation() {
     const fragment = location.hash;
 
     useEffect(() => {
-        if (scrollBoxRef?.current && fragment) {
-            const f = decodeURI(fragment.substring(1));
+        if (scrollBoxRef?.current ) {
+            if (fragment) {
+                const f = decodeURI(fragment.substring(1));
 
-            const element = scrollBoxRef.current.querySelector(`[data-header-id="${f}"]`)
-            if (element) {
-                element.scrollIntoView({
-                    behavior: 'smooth'
-                })
+                const element = scrollBoxRef.current.querySelector(`[data-header-id="${f}"]`)
+                if (element) {
+                    element.scrollIntoView({
+                        behavior: 'smooth'
+                    })
+                }
+            } else {
+                scrollBoxRef.current.scrollTo({
+                    behavior : 'smooth',
+                    top : 0
+                });
             }
         }
     }, [fragment]);

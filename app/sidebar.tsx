@@ -48,7 +48,7 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, onNavigate }: ZeitlerFo
         <Paper style={sidebarStyles} elevation={6} square>
             {isExpanded() && (
                 <SimpleTreeView>
-                    <ZeitlerForceTreeItem label="Deployments">
+                    <ZeitlerForceTreeItem label="Deployments" to={`deployments`}>
                         <ZeitlerForceTreeItem label={deployOnSaveHeader} to={`deployments#${encodeURI(deployOnSaveHeader)}`}></ZeitlerForceTreeItem>
                         <ZeitlerForceTreeItem label={deployFolderHeader} to={`deployments#${encodeURI(deployFolderHeader)}`}></ZeitlerForceTreeItem>
                         <ZeitlerForceTreeItem label={seeErrorsHeader} to={`deployments#${encodeURI(seeErrorsHeader)}`}></ZeitlerForceTreeItem>
