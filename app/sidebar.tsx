@@ -2,10 +2,11 @@ import type React from "react";
 import { useMediaContext } from "./mediaContext";
 
 import Paper from '@mui/material/Paper';
-import { useNavigate } from "react-router";
+import { useNavigate, type To } from "react-router";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { useAppBarHeight } from "./useAppBarHeight";
-import { deployOnSaveHeader } from "./routes/deployOnSaveDocumentation";
+import { deployFolderHeader, deployOnSaveHeader, seeErrorsHeader } from "./routes/deployOnSaveDocumentation";
+import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
 
 // There must be some place we can commonly denote this.
 type OnNavigateEvent = { id: 'deploy-on-save'; }
@@ -43,53 +44,42 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, onNavigate }: ZeitlerFo
         left: 0
     };
 
-    const navigate = useNavigate();
     return (
         <Paper style={sidebarStyles} elevation={6} square>
             {isExpanded() && (
                 <SimpleTreeView>
-                    <TreeItem itemId="deployments" label="Deployments">
-                        <TreeItem itemId="deploy-on-save" label={deployOnSaveHeader} onClick={async () => {
-                            await navigate(`deploy-on-save#${encodeURI(deployOnSaveHeader)}`)
-                            if (onNavigate) {
-                                onNavigate({
-                                    id:'deploy-on-save' 
-                                });
-                            }
-                        }} />
-                        <TreeItem itemId="deploy-folder" label="Deploy Folder" onClick={() => {
-                            navigate("deploy-on-save")
-                        }} />
-                        <TreeItem itemId="see-errors" label="See Errors" onClick={() => {
-                            navigate("deploy-on-save")
-                        }} />
-                    </TreeItem>
-                    <TreeItem itemId="zoql" label="Zoql">
-                        <TreeItem itemId="create-zoql-script" label="Create Zoql Script" onClick={() => {
-                            navigate("zoql")
-                        }} />
-                        <TreeItem itemId="soql-intellisense" label="Soql Intellisense" onClick={() => {
-                            navigate("zoql")
-                        }} />
-                    </TreeItem>
-                    <TreeItem itemId="logs" label="Logs">
-                        <TreeItem itemId="enable-debug-logging" label="Enable Debug Logging" onClick={() => {
-                            navigate("logs");
-                        }} />
-                        <TreeItem itemId="view-debugs" label="View Debugs" onClick={() => {
-                            navigate("logs");
-                        }} />
-                        <TreeItem itemId="refresh-debug-logs" label="Refresh Debug Logs" onClick={() => {
-                            navigate("logs");
-                        }} />
-                    </TreeItem>
-                    <TreeItem itemId="unit-tests" label="Unit Tests">
-                        <TreeItem itemId="run-unit-tests" label="Run Unit Tests" onClick={() => {
-                            navigate('unit-tests');
-                        }} />
-                    </TreeItem>
+                    <ZeitlerForceTreeItem label="Deployments">
+                        <ZeitlerForceTreeItem label={deployOnSaveHeader} to={`deployments#${encodeURI(deployOnSaveHeader)}`}></ZeitlerForceTreeItem>
+                        <ZeitlerForceTreeItem label={deployFolderHeader} to={`deployments#${encodeURI(deployFolderHeader)}`}></ZeitlerForceTreeItem>
+                        <ZeitlerForceTreeItem label={seeErrorsHeader} to={`deployments#${encodeURI(seeErrorsHeader)}`}></ZeitlerForceTreeItem>
+                    </ZeitlerForceTreeItem >
+                    <ZeitlerForceTreeItem label="Zoql">
+                        <ZeitlerForceTreeItem label="Create Zoql Script" to={`zoql#${encodeURI("Create Zoql Script")}`}></ZeitlerForceTreeItem>
+                        <ZeitlerForceTreeItem label="Soql Intellisense" to={`zoql#${encodeURI("Soql")}`}></ZeitlerForceTreeItem>
+                    </ZeitlerForceTreeItem>
+                    <ZeitlerForceTreeItem label="Logs">
+                        <ZeitlerForceTreeItem label="Enable Debug Logging" to={`logs#${encodeURI("Enable Debug Logging")}`}></ZeitlerForceTreeItem>
+                        <ZeitlerForceTreeItem label="View Debugs" to={`logs#${encodeURI("View Debugs")}`}></ZeitlerForceTreeItem>
+                        <ZeitlerForceTreeItem label="Refresh Debug Logs" to={`logs#${encodeURI("Refresh Debug Logs")}`}></ZeitlerForceTreeItem>
+                    </ZeitlerForceTreeItem>
+                    <ZeitlerForceTreeItem label="Unit Tests">
+                        <ZeitlerForceTreeItem label="Run Unit Tests" to={`unit-tests#${encodeURI("Run Unit Tests")}`}></ZeitlerForceTreeItem>
+                    </ZeitlerForceTreeItem>
                 </SimpleTreeView>
             )}
         </Paper>
     );
+}
+
+function ZeitlerForceTreeItem({ label, to, children }: { label: string; to?: To; children?: React.ReactNode[] | React.ReactNode }) {
+    const navigate = useNavigate();
+    return (
+        <TreeItem itemId={label} label={label} onClick={() => {
+            if (to) {
+                navigate(to);
+            }
+        }}>
+            {children}
+        </TreeItem>
+    )
 }

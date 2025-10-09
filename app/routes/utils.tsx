@@ -9,24 +9,24 @@ Proin id tortor ac leo molestie pellentesque. Curabitur id orci mauris. Vestibul
 Suspendisse potenti. Donec eu nibh sit amet est ornare fermentum vel ut turpis. Donec egestas mauris quis egestas ultricies. Duis lobortis lobortis dolor. Etiam faucibus gravida porttitor. Curabitur orci ex, tincidunt non ante nec, lacinia luctus justo. Aenean convallis pharetra lacus, in cursus elit blandit ac. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Morbi eu fermentum mi, at iaculis turpis. Integer vitae tortor erat. Cras feugiat varius fringilla.`;
 
 type Variant = Pick<TypographyOwnProps, "variant">;
-type DocumentationProps = { children?: React.ReactNode[] | React.ReactNode; id?: 'Deploy on Save' } & Variant
+type DocumentationProps = { label?: string } & Variant
 
-export function DocumentationHeader({ children, variant = 'h4', id }: DocumentationProps) {
+export function DocumentationHeader({ variant = 'h4', label }: DocumentationProps) {
     return (
-        <div data-header-id={id}>
-            <Typography variant={variant}> {children}</Typography >
+        <div data-header-id={label}>
+            <Typography variant={variant}> {label}</Typography >
             <Divider></Divider>
         </div>
     );
 }
 
-export function DocumentationSubHeader({ children, variant = 'h5', id }: DocumentationProps) {
+export function DocumentationSubHeader({ variant = 'h5', label }: DocumentationProps) {
     return (
-        <div data-header-id={id}>
+        <div data-header-id={label}>
             <Divider></Divider>
             <Typography variant={variant} sx={{
                 py: 1
-            }}> {children}</Typography >
+            }}> {label}</Typography >
             <Divider></Divider>
         </div>);
 }

@@ -1,23 +1,20 @@
 import Box from "@mui/material/Box";
 import { DocumentationBody, DocumentationHeader, DocumentationSubBody, DocumentationSubHeader, lorumIpsumText } from "./utils";
 
+export const createZoqlScriptHeader = 'Create Zoql Script';
+export const soqlIntellisenseHeader = 'Soql Intellisense [BETA]';
+
 export default function ZoqlDocumentation() {
 	return (<Box>
-		<DocumentationHeader>
-			Zoql
-		</DocumentationHeader>
+		<DocumentationHeader label="Zoql"/>
 		<DocumentationBody>
 			{lorumIpsumText}
 		</DocumentationBody>
-		<DocumentationSubHeader>
-			Create Zoql Script
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label={createZoqlScriptHeader}/>
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>
-		<DocumentationSubHeader>
-			Soql Intellisense [BETA]
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label={soqlIntellisenseHeader}/>
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>

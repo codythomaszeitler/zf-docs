@@ -3,15 +3,11 @@ import { DocumentationHeader, DocumentationBody, lorumIpsumText, DocumentationSu
 
 export function UnitTestDocumentation() {
 	return (<Box>
-		<DocumentationHeader>
-			Unit Tests
-		</DocumentationHeader>
+		<DocumentationHeader label="Unit Tests"/>
 		<DocumentationBody>
 			{lorumIpsumText}
 		</DocumentationBody>
-		<DocumentationSubHeader>
-            Run Unit Tests
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label="Run Unit Tests"/>
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>
