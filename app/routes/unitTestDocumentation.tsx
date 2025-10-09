@@ -1,28 +1,16 @@
 import Box from "@mui/material/Box";
 import { DocumentationHeader, DocumentationBody, lorumIpsumText, DocumentationSubHeader, DocumentationSubBody } from "./utils";
 
-export function LogsDocumentation() {
+export function UnitTestDocumentation() {
 	return (<Box>
 		<DocumentationHeader>
-			Logs
+			Unit Tests
 		</DocumentationHeader>
 		<DocumentationBody>
 			{lorumIpsumText}
 		</DocumentationBody>
 		<DocumentationSubHeader>
-			Enable Debug Logging	
-		</DocumentationSubHeader>
-		<DocumentationSubBody>
-			{lorumIpsumText}
-		</DocumentationSubBody>
-		<DocumentationSubHeader>
-			View Debugs
-		</DocumentationSubHeader>
-		<DocumentationSubBody>
-			{lorumIpsumText}
-		</DocumentationSubBody>
-		<DocumentationSubHeader>
-			Refresh Debug Logs
+            Run Unit Tests
 		</DocumentationSubHeader>
 		<DocumentationSubBody>
 			{lorumIpsumText}

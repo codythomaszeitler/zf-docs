@@ -5,6 +5,9 @@ import {
 import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
 import DeployOnSaveDocumentation from "./routes/deployOnSaveDocumentation";
 import Dashboard from "./routes/dashboard";
+import ZoqlDocumentation from "./routes/zoqlDocumentation";
+import { LogsDocumentation } from "./routes/logsDocumentation";
+import { UnitTestDocumentation } from "./routes/unitTestDocumentation";
 
 export const routerConfig: RouteObject[] = [
     {
@@ -18,6 +21,18 @@ export const routerConfig: RouteObject[] = [
             {
                 path: 'deploy-on-save',
                 Component: DeployOnSaveDocumentation
+            },
+            {
+                path : 'zoql',
+                Component : ZoqlDocumentation
+            },
+            {
+                path : 'logs',
+                Component : LogsDocumentation
+            },
+            {
+                path : 'unit-tests',
+                Component : UnitTestDocumentation
             }
         ]
     }

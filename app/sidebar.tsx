@@ -44,25 +44,39 @@ export function ZeitlerForceSidebar({ isSidebarExpanded }: ZeitlerForceSidebarPr
             {isExpanded() && (
                 <SimpleTreeView>
                     <TreeItem itemId="deployments" label="Deployments">
-                        <TreeItem itemId="deploy-on-save" label="Deploy on Save" onClick={async (event) => {
-                            await navigate("deploy-on-save")
+                        <TreeItem itemId="deploy-on-save" label="Deploy on Save" onClick={() => {
+                            navigate("deploy-on-save")
                         }} />
-                        <TreeItem itemId="deploy-folder" label="Deploy Folder" />
-                        <TreeItem itemId="see-errors" label="See Errors" />
+                        <TreeItem itemId="deploy-folder" label="Deploy Folder" onClick={() => {
+                            navigate("deploy-on-save")
+                        }} />
+                        <TreeItem itemId="see-errors" label="See Errors" onClick={() => {
+                            navigate("deploy-on-save")
+                        }} />
                     </TreeItem>
                     <TreeItem itemId="zoql" label="Zoql">
                         <TreeItem itemId="create-zoql-script" label="Create Zoql Script" onClick={() => {
-                            navigate("/documentation/zoql")
+                            navigate("zoql")
                         }} />
-                        <TreeItem itemId="soql-intellisense" label="Soql Intellisense" />
+                        <TreeItem itemId="soql-intellisense" label="Soql Intellisense" onClick={() => {
+                            navigate("zoql")
+                        }} />
                     </TreeItem>
                     <TreeItem itemId="logs" label="Logs">
-                        <TreeItem itemId="enable-debug-logging" label="Enable Debug Logging" />
-                        <TreeItem itemId="view-debugs" label="View Debugs" />
-                        <TreeItem itemId="refresh-debug-logs" label="Refresh Debug Logs" />
+                        <TreeItem itemId="enable-debug-logging" label="Enable Debug Logging" onClick={() => {
+                            navigate("logs");
+                        }} />
+                        <TreeItem itemId="view-debugs" label="View Debugs" onClick={() => {
+                            navigate("logs");
+                        }}/>
+                        <TreeItem itemId="refresh-debug-logs" label="Refresh Debug Logs" onClick={() => {
+                            navigate("logs");
+                        }}/>
                     </TreeItem>
                     <TreeItem itemId="unit-tests" label="Unit Tests">
-                        <TreeItem itemId="run-unit-tests" label="Run Unit Tests" />
+                        <TreeItem itemId="run-unit-tests" label="Run Unit Tests"  onClick={() => {
+                            navigate('unit-tests');
+                        }}/>
                     </TreeItem>
                 </SimpleTreeView>
             )}
