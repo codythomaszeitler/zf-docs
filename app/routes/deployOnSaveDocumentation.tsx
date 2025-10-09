@@ -4,6 +4,8 @@ import Box from "@mui/material/Box";
 import Divider from '@mui/material/Divider';
 import React from "react";
 
+import { lorumIpsumText } from "./utils";
+
 export default function DeployOnSaveDocumentation() {
     return (
         <Box data-testid='deploy-on-save-screen'>
@@ -11,33 +13,28 @@ export default function DeployOnSaveDocumentation() {
                 Deployments
             </DocumentationHeader>
             <DocumentationBody>
-                This is our explanation of how deployments work.
-                This is going to be a very, very, very long message.
+                {lorumIpsumText}
             </DocumentationBody>
             <DocumentationSubHeader>
                 Deploy on Save
             </DocumentationSubHeader>
             <DocumentationSubBody>
-                This is going to be the explanation of how deploy on save works.
-                For example, we are going to show how it queues up deployments.
+                {lorumIpsumText}
             </DocumentationSubBody>
             <DocumentationSubHeader>
                 Deploy Folder
             </DocumentationSubHeader>
             <DocumentationSubBody>
                 <p>
-                    This is going to be an explanation of how deploying a folder is going to work.
-                    For example, we are are going to show how it can show errors.
-
+                    {lorumIpsumText}
                 </p>
                 <p>
-                    To elaborate more on this, you can click on an error and it can show you the exact
-                    location of where that error is.
+                    {lorumIpsumText}
                 </p>
             </DocumentationSubBody>
             <DocumentationSubHeader>See Errors</DocumentationSubHeader>
             <DocumentationSubBody>
-                This is the location where we are going to discuss how to navigate to errors.
+                {lorumIpsumText}
             </DocumentationSubBody>
         </Box>
     );
