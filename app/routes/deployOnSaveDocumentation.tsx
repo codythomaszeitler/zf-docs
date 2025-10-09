@@ -24,12 +24,12 @@ export default function DeployOnSaveDocumentation() {
                 Deploy Folder
             </DocumentationSubHeader>
             <DocumentationSubBody>
-                <p>
+                <div>
                     {lorumIpsumText}
-                </p>
-                <p>
+                </div>
+                <div>
                     {lorumIpsumText}
-                </p>
+                </div>
             </DocumentationSubBody>
             <DocumentationSubHeader>See Errors</DocumentationSubHeader>
             <DocumentationSubBody>

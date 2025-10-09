@@ -11,12 +11,12 @@ Suspendisse potenti. Donec eu nibh sit amet est ornare fermentum vel ut turpis. 
 type Variant = Pick<TypographyOwnProps, "variant">;
 type DocumentationProps = { children?: React.ReactNode[] | React.ReactNode; id?: 'Deploy on Save' } & Variant
 
-export function DocumentationHeader({ children, variant = 'h4' }: DocumentationProps) {
+export function DocumentationHeader({ children, variant = 'h4', id }: DocumentationProps) {
     return (
-        <>
+        <div data-header-id={id}>
             <Typography variant={variant}> {children}</Typography >
             <Divider></Divider>
-        </>
+        </div>
     );
 }
 
