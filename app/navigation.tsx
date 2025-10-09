@@ -82,14 +82,7 @@ export function ZeitlerForceNavigation() {
                 </Toolbar>
             </AppBar>
             <Box display='flex' flexDirection='row' flex={'1 0 auto'} height={`calc(100vh - ${appBarHeight}${unitOfMeasurement})`}>
-                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded} onNavigate={({ id }) => {
-                    // if (scrollBoxRef) {
-                    //     scrollBoxRef.current?.scrollTo({
-                    //         top: 0,
-                    //         behavior: 'smooth'
-                    //     });
-                    // }
-                }}></ZeitlerForceSidebar>
+                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
                     <Box ref={scrollBoxRef} height='100%' width='100%' overflow='auto'
                         sx={(theme) => {
