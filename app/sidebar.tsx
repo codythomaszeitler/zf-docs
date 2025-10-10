@@ -29,13 +29,13 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, }: ZeitlerForceSidebarP
         return undefined;
     }
 
-    const width = isExpanded() ? 250 : 5;
+    const width = isExpanded() ? 250 : 1;
     const sidebarStyles: React.CSSProperties = {
         width,
         height: `calc(100vh - ${appBarHeight}${unitOfMeasurement})`,
         overflow: 'hidden',
         transition: 'width 0.5s',
-        padding: 5,
+        padding: isExpanded() ? 5 : 2,
         position: position(),
         top: `${appBarHeight}${unitOfMeasurement}`,
         left: 0

@@ -4,10 +4,7 @@ import { DocumentationBody, DocumentationHeader, lorumIpsumText } from "./utils"
 export default function Dashboard() {
 	return (
 		<Box data-testid='dashboard-screen'>
-
-			<DocumentationHeader>
-				ZeitlerForce - An Introduction
-			</DocumentationHeader>
+			<DocumentationHeader label="ZeitlerForce - An Introduction"/>
 			<DocumentationBody>
 				{lorumIpsumText}
 			</DocumentationBody>
