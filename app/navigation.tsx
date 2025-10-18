@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import { ZeitlerForceSidebar } from "./sidebar";
+import { config, ZeitlerForceSidebar } from "./sidebar";
 import { Outlet, useLocation, useNavigate } from "react-router";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
@@ -35,7 +35,7 @@ export function ZeitlerForceNavigation() {
     const fragment = location.hash;
 
     useEffect(() => {
-        if (scrollBoxRef?.current ) {
+        if (scrollBoxRef?.current) {
             if (fragment) {
                 const f = decodeURI(fragment.substring(1));
 
@@ -47,8 +47,8 @@ export function ZeitlerForceNavigation() {
                 }
             } else {
                 scrollBoxRef.current.scrollTo({
-                    behavior : 'smooth',
-                    top : 0
+                    behavior: 'smooth',
+                    top: 0
                 });
             }
         }
@@ -82,7 +82,7 @@ export function ZeitlerForceNavigation() {
                 </Toolbar>
             </AppBar>
             <Box display='flex' flexDirection='row' flex={'1 0 auto'} height={`calc(100vh - ${appBarHeight}${unitOfMeasurement})`}>
-                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded}></ZeitlerForceSidebar>
+                <ZeitlerForceSidebar isSidebarExpanded={isSidebarExpanded} config={config}></ZeitlerForceSidebar>
                 <Box flex='1 0'>
                     <Box ref={scrollBoxRef} height='100%' width='100%' overflow='auto'
                         sx={(theme) => {
