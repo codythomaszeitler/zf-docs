@@ -3,27 +3,19 @@ import { DocumentationHeader, DocumentationBody, lorumIpsumText, DocumentationSu
 
 export function LogsDocumentation() {
 	return (<Box>
-		<DocumentationHeader>
-			Logs
-		</DocumentationHeader>
+		<DocumentationHeader label="Logs" />
 		<DocumentationBody>
 			{lorumIpsumText}
 		</DocumentationBody>
-		<DocumentationSubHeader>
-			Enable Debug Logging	
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label="Enable Debug Logging" />
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>
-		<DocumentationSubHeader>
-			View Debugs
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label="View Debugs" />
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>
-		<DocumentationSubHeader>
-			Refresh Debug Logs
-		</DocumentationSubHeader>
+		<DocumentationSubHeader label="Refresh Debug Logs" />
 		<DocumentationSubBody>
 			{lorumIpsumText}
 		</DocumentationSubBody>

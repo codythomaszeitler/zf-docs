@@ -2,33 +2,34 @@ import Box from "@mui/material/Box";
 
 import { DocumentationBody, DocumentationHeader, DocumentationSubBody, DocumentationSubHeader, lorumIpsumText } from "./utils";
 
+export const deployOnSaveHeader = 'Deploy on Save';
+export const deployFolderHeader = 'Deploy Folder';
+export const seeErrorsHeader = 'See Errors';
+
 export default function DeployOnSaveDocumentation() {
     return (
         <Box data-testid='deploy-on-save-screen'>
-            <DocumentationHeader>
-                Deployments
+            <DocumentationHeader label="Deployments">
             </DocumentationHeader>
             <DocumentationBody>
                 {lorumIpsumText}
             </DocumentationBody>
-            <DocumentationSubHeader>
-                Deploy on Save
+            <DocumentationSubHeader label={deployOnSaveHeader}>
             </DocumentationSubHeader>
             <DocumentationSubBody>
                 {lorumIpsumText}
             </DocumentationSubBody>
-            <DocumentationSubHeader>
-                Deploy Folder
+            <DocumentationSubHeader label={deployFolderHeader}>
             </DocumentationSubHeader>
             <DocumentationSubBody>
-                <p>
+                <div>
                     {lorumIpsumText}
-                </p>
-                <p>
+                </div>
+                <div>
                     {lorumIpsumText}
-                </p>
+                </div>
             </DocumentationSubBody>
-            <DocumentationSubHeader>See Errors</DocumentationSubHeader>
+            <DocumentationSubHeader label={seeErrorsHeader}></DocumentationSubHeader>
             <DocumentationSubBody>
                 {lorumIpsumText}
             </DocumentationSubBody>

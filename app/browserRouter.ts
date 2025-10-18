@@ -19,7 +19,7 @@ export const routerConfig: RouteObject[] = [
                 Component : Dashboard
             },
             {
-                path: 'deploy-on-save',
+                path: 'deployments',
                 Component: DeployOnSaveDocumentation
             },
             {
