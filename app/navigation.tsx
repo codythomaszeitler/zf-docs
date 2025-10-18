@@ -10,6 +10,7 @@ import { Outlet, useLocation, useNavigate } from "react-router";
 import { useContext, useEffect, useRef, useState } from "react";
 import { ZeitlerForceDocumentationContext } from "./zeitlerForceDocumentation";
 import { useAppBarHeight } from './useAppBarHeight';
+import { queryByDataHeaderId } from './routes/utils';
 
 export const ZEITLERFORCE_HEADER_HEIGHT = 64;
 
@@ -38,8 +39,7 @@ export function ZeitlerForceNavigation() {
         if (scrollBoxRef?.current) {
             if (fragment) {
                 const f = decodeURI(fragment.substring(1));
-
-                const element = scrollBoxRef.current.querySelector(`[data-header-id="${f}"]`)
+                const element = queryByDataHeaderId(scrollBoxRef, f);
                 if (element) {
                     element.scrollIntoView({
                         behavior: 'smooth'

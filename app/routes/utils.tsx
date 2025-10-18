@@ -1,6 +1,7 @@
 import Divider from '@mui/material/Divider';
 import React from "react";
 import { Typography, type TypographyOwnProps } from "@mui/material";
+import { data } from 'react-router';
 
 export const lorumIpsumText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at pretium elit. Praesent volutpat dolor a elit imperdiet consequat. Curabitur a feugiat leo, sed pharetra massa. In quis mi ipsum. Donec mauris erat, ornare pellentesque eros a, volutpat lobortis tortor. Nam viverra dolor at vehicula dignissim. Donec bibendum, lacus id rhoncus fermentum, purus leo ultrices augue, et sollicitudin tellus neque quis mi. Mauris non leo ut ligula scelerisque vestibulum. Phasellus facilisis ex ex, tempor egestas enim consequat ac. Quisque aliquet fringilla lacus, ut facilisis leo vehicula sed. Donec eu dolor eget ex porttitor ullamcorper finibus nec justo. Morbi faucibus vehicula neque et luctus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In hac habitasse platea dictumst. Etiam et faucibus enim, in commodo urna. Maecenas commodo turpis purus, sed elementum diam pretium in.
 Aliquam sed egestas lectus. Morbi tempor purus ex, cursus eleifend ante vehicula et. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ipsum enim, tristique et rhoncus vitae, interdum sit amet ante. Aliquam lobortis tincidunt ultrices. Donec finibus sodales volutpat. Vestibulum sed dapibus augue, vitae iaculis ipsum.
@@ -11,9 +12,22 @@ Suspendisse potenti. Donec eu nibh sit amet est ornare fermentum vel ut turpis. 
 type Variant = Pick<TypographyOwnProps, "variant">;
 type DocumentationProps = { label?: string } & Variant
 
+export const dataHeaderId = 'data-header-id';
+
+export function queryByDataHeaderId(parent: React.RefObject<HTMLElement | null>, headerLabel: string) {
+    const element = parent.current?.querySelector(`[data-header-id="${headerLabel}"]`);
+    return element;
+}
+
+function genDataHeaderIdObject(label?: string) {
+    return {
+        [dataHeaderId]: label
+    } as const;
+}
+
 export function DocumentationHeader({ variant = 'h4', label }: DocumentationProps) {
     return (
-        <div data-header-id={label}>
+        <div {...genDataHeaderIdObject(label)}>
             <Typography variant={variant}> {label}</Typography >
             <Divider></Divider>
         </div>
@@ -22,7 +36,7 @@ export function DocumentationHeader({ variant = 'h4', label }: DocumentationProp
 
 export function DocumentationSubHeader({ variant = 'h5', label }: DocumentationProps) {
     return (
-        <div data-header-id={label}>
+        <div {...genDataHeaderIdObject(label)}>
             <Divider></Divider>
             <Typography variant={variant} sx={{
                 py: 1
