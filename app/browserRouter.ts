@@ -3,7 +3,7 @@ import {
     type RouteObject
 } from "react-router";
 import { ZeitlerForceDocumentation } from "./zeitlerForceDocumentation";
-import DeployOnSaveDocumentation from "./routes/deployOnSaveDocumentation";
+import { DeploymentDocumentation } from "./routes/deploymentsDocumentation";
 import Dashboard from "./routes/dashboard";
 import ZoqlDocumentation from "./routes/zoqlDocumentation";
 import { LogsDocumentation } from "./routes/logsDocumentation";
@@ -16,23 +16,23 @@ export const routerConfig: RouteObject[] = [
         children: [
             {
                 index: true,
-                Component : Dashboard
+                Component: Dashboard
             },
             {
                 path: 'deployments',
-                Component: DeployOnSaveDocumentation
+                Component: DeploymentDocumentation
             },
             {
-                path : 'zoql',
-                Component : ZoqlDocumentation
+                path: 'zoql',
+                Component: ZoqlDocumentation
             },
             {
-                path : 'logs',
-                Component : LogsDocumentation
+                path: 'logs',
+                Component: LogsDocumentation
             },
             {
-                path : 'unit-tests',
-                Component : UnitTestDocumentation
+                path: 'unit-tests',
+                Component: UnitTestDocumentation
             }
         ]
     }
