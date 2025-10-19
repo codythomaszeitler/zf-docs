@@ -5,7 +5,7 @@ import Paper from '@mui/material/Paper';
 import { useNavigate, type To } from "react-router";
 import { SimpleTreeView, TreeItem } from "@mui/x-tree-view";
 import { useAppBarHeight } from "./useAppBarHeight";
-import { deployFolderHeader, deployOnSaveHeader, seeErrorsHeader } from "./routes/deployOnSaveDocumentation";
+import { deployFolderHeader, deployOnSaveHeader, seeErrorsHeader } from "./routes/deploymentsDocumentation";
 import { useState } from "react";
 import { createZoqlScriptHeader, soqlIntellisenseHeader } from "./routes/zoqlDocumentation";
 import { Typography } from "@mui/material";
