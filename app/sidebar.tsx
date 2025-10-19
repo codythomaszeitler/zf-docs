@@ -8,6 +8,7 @@ import { useAppBarHeight } from "./useAppBarHeight";
 import { deployFolderHeader, deployOnSaveHeader, seeErrorsHeader } from "./routes/deployOnSaveDocumentation";
 import { useState } from "react";
 import { createZoqlScriptHeader, soqlIntellisenseHeader } from "./routes/zoqlDocumentation";
+import { Typography } from "@mui/material";
 
 type ZeitlerForceSidebarProps = {
     isSidebarExpanded: boolean;
@@ -134,10 +135,29 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, config: { children } }:
     );
 }
 
+function ZeitlerForceTreeItemHeaderLabel({ label }: { label: string }) {
+    return (
+        <Typography style={{
+            fontWeight: 'bold'
+        }}>
+            {label}
+        </Typography>
+    )
+}
+
 function ZeitlerForceTreeItem({ label, to, children }: { label: string; to?: To; children?: ZeitlerForceTreeItemConfig[] }) {
     const navigate = useNavigate();
+
+    const hasChildren = () => {
+        if (!children) {
+            return false;
+        }
+        return children.length > 0;
+    }
+
+    const treeItemLabel = hasChildren() ? <ZeitlerForceTreeItemHeaderLabel label={label}></ZeitlerForceTreeItemHeaderLabel> : label;
     return (
-        <TreeItem itemId={label} label={label} onClick={() => {
+        <TreeItem itemId={label} label={treeItemLabel} onClick={() => {
             if (to) {
                 navigate(to);
             }
