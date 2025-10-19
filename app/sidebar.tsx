@@ -102,13 +102,13 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, config: { children } }:
         return undefined;
     }
 
-    const width = isExpanded() ? 250 : 1;
+    const width = isExpanded() ? 250 : 0;
     const sidebarStyles: React.CSSProperties = {
         width,
         height: `calc(100vh - ${appBarHeight}${unitOfMeasurement})`,
         overflow: 'hidden',
         transition: 'width 0.5s',
-        padding: isExpanded() ? 5 : 2,
+        padding: isExpanded() ? 5 : 0,
         position: position(),
         top: `${appBarHeight}${unitOfMeasurement}`,
         left: 0
@@ -118,7 +118,7 @@ export function ZeitlerForceSidebar({ isSidebarExpanded, config: { children } }:
     const [expandedItems, setExpandedItems] = useState<string[]>(allParentTreeIds);
 
     return (
-        <Paper style={sidebarStyles} elevation={6} square>
+        <Paper style={sidebarStyles} variant="elevation">
             {isExpanded() && (
                 <SimpleTreeView expandedItems={expandedItems} onExpandedItemsChange={() => {
                     setExpandedItems(allParentTreeIds);
